@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <div id='content' ng-app='MyTutorialApp' ng-controller='RestaurantAddController'>
+
+        <ul ng-model='selectedRestaurant'>
+            <li ng-repeat='obj in restaurants'>
+                <button ng-click="setValueOfIdx($index)">Details</button>
+                {{obj.name}}
+            </li>
+        </ul>
+
+        <ul ng-model='selectedDetails'>
+            <li ng-repeat='label in restaurants[idx].items'>{{label}}</li>
+        </ul>
+
+        <ul>
+
+        </ul>
+
+        <input type="text" ng-model="newRestaurant" value="newName" placeholder="Restaurant Name"/>
+        <input type="text" ng-model="newphone" value="Phone" placeholder="Format: xxx-xxx-xxxx"/>
+        <input type="text" ng-model="item1" value="item1" placeholder="Item1"/>
+        <input type="text" ng-model="item2" value="item2" placeholder="Item2"/>
+        <input type="text" ng-model="item3" value="item3" placeholder="Item3"/>
+        <button ng-click="addNewRestaurant()">Add</button>
+
+    </div>
+
+    <div id='content' ng-app='MyTutorialApp' ng-controller='MainController'>
+
+        <ul ng-model='selectedRestaurant'>
+            <li ng-repeat='obj in restaurants'>
+                <button ng-click="setValueOfIdx($index)">Edit</button>
+                <input type="text" value="{{obj.name}}"/>
+            </li>
+        </ul>
+
+        <ul ng-model='selectedDetails'>
+            <li ng-repeat='label in restaurants[idx].items'>
+                <input type="text" value="{{label}}"/>
+            </li>
+            <button ng-click="addNewItem(idx)">Add New Menu Item</button>
+        </ul>
+        <button ng-click="updateChanges()">Submit Updates</button>
+    </div>
+
+</body>
+</html>
