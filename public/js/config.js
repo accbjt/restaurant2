@@ -5,9 +5,9 @@ window.app.config(['$routeProvider', function($routeProvider) {
     {
             templateUrl: 'views/index.html'
     })
-    .when('/restaurantadd',
+    .when('/addrestaurant',
     {
-        templateUrl: 'views/restaurant/restaurants.html'
+        templateUrl: 'views/restaurant/addrestaurant.html'
     })
 	.otherwise({redirectTo: '/'});
 }]);

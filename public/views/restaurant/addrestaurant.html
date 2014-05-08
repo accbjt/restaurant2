@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div id='content' ng-app='MyTutorialApp' ng-controller='RestaurantController'>
+<div id='content' ng-app='MyTutorialApp' ng-controller='AddRestaurantController'>
 
     <ul ng-model='selectedRestaurant'>
         <li ng-repeat='obj in restaurants'>
@@ -22,8 +22,8 @@
     <label for="newRestaurant">Rest Name:</label>
     <input id="newRestaurant" type="text" ng-model="newRestaurant" value="newName" /><br/>
 
-    <button ng-click="addNewRestItem()">Add Item</button>
-    <input id="restItem" type="text" ng-model="restItem" value="" /><br/>
+    <input id="restItem" type="text" ng-model="restItem" value="" />
+    <button ng-click="addNewRestItem()">Add Item</button><br/>
     <button ng-click="addNewRestaurant()">Add Restaurant</button><br/>
 
 </div>

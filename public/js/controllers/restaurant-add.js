@@ -1,189 +1,88 @@
-/**
- * Created by taylorcase on 5/6/14.
- */
+//var mongoose = require('mongoose');
 
 window.angular.module('ngff.controllers.restaurant-add', [])
-    .controller('RestaurantAddController', ['$scope', '$routeParams','$location', 'Global', 'Restaurants',
-        function($scope, $routeParams, $location, Global, Restaurants) {
+    .controller('AddRestaurantController', ['$scope', '$routeParams','$location', '$http', 'Global', 'Restaurant',
+        function($scope, $routeParams, $location, $http, Global, Restaurant) {
 
             $scope.global = Global;
             $scope.selectedRestaurant = 0;
-
-            $scope.restaurants = [
-                {
-                    id: 0,
-                    name: 'zPizza',
-                    phone: '510-360-9900',
-                    items: [
-                        'California Salad',
-
-                        'Chicken Ceasar Salad',
-
-                        'Greek Salad',
-
-                        'Arugula Salad',
-
-                        'Pear and Gorgonzola Salad',
-
-                        'ZBQ Salad',
-
-                        'Hot Meatball Sub',
-
-                        'Turkey Breast Sandwich',
-
-                        'Pollo Latino Sandwich',
-
-                        'Z-Tuna Sandwich',
-
-                        'Supersub',
-
-                        'Yuppie Chicken Sandwich',
-
-                        'Penne with Meatballs',
-
-                        'Chicken Penne Pesto',
-
-                        'Veggie Calzone',
-
-                        'Meat Calzone',
-
-                        'Cheese Pizza',
-
-                        'Sausage & Mushrooms',
-
-                        'Pepperoni',
-
-                        'Ham and Pineapple',
-
-                        'Chicken Sausage & Arugula Rustica',
-
-                        'Mediterranean Rustica',
-
-                        'Pear and Gorgonzola Rustica'
-                    ]
-                },
-                {
-                    id: 1,
-                    name: 'Falafel Corner',
-                    phone:'510-252-1577',
-                    items: [
-                        'Classic Hamburger',
-
-                        'Classic Cheeseburger',
-
-                        'Double Cheeseburger',
-
-                        'Avocado Burger',
-
-                        'Hawaiian',
-
-                        'Tex-Mex Burger',
-
-                        'Bacon Cheddar Burger',
-
-                        '6 Buffalo Wings',
-                        '6 BBQ wings',
-                        'Teriyaki Wings',
-
-                        '12"Pepperoni pizza',
-
-                        '12"Cheese pizza'
-                    ]
-                },
-                {
-                    id: 2,
-                    name: 'Eastern Winds',
-                    phone:'510-651-6678',
-                    items: [
-                        'Almond Chicken',
-
-                        'Kung Pao Beef or Chicken',
-
-                        'Cashew Nut Chicken',
-
-                        'Sesame Chicken',
-
-                        'String Bean Chicken or Beef',
-
-                        'Chicken with Mixed Veggies',
-
-                        'Sweet and Sour Chicken or Pork',
-
-                        'Broccoli Beef or Chicken',
-
-                        'Szechuan Beef or Chicken',
-
-                        'Mongolian Beef or Chicken',
-
-                        'Garlic Pork in Szechuan Sauce',
-
-                        'Bean Curd in Spicy Sauce',
-
-                        'Mixed Fresh Veggies',
-
-                        'Eggplant in Szechuan Sauce',
-
-                        'Prawns with Black Bean Sauce',
-
-                        'Prawns with Broccoli',
-
-                        'Kung Pao Prawns',
-
-                        'Lemon Chicken',
-
-                        'Orange Chicken'
-                    ]
-                },
-                {
-                    id: 3,
-                    name: 'Extreme Pita',
-                    phone:'510-490-7482',
-                    items: [
-                        'Grilled Chicken',
-
-                        'Rustic Italian',
-
-                        'Falafel',
-
-                        'Veggie',
-
-                        'Club',
-
-                        'Gyro',
-
-                        'Tuna',
-
-                        'Chiptole Steak',
-
-                        'Philly Steak',
-
-                        'The Chief',
-
-                        'Chick-Chick Boom!',
-
-                        'Uncle Philly',
-
-                        'Chicken Shawarma',
-
-                        'Bourbon Chipotle',
-
-                        'Chicken Caesar',
-
-                        'Chicken Souvlaki',
-
-                        'Buffalo Chicken',
-
-                        'Fiesta Mexicana',
-
-                        'Thai Beef'
-                    ]
-                }
-            ];
-
-            $scope.selectedDetails = null
+            $scope.selectedDetails = null;
             $scope.newScope = null;
             $scope.newRestaurant = null;
             $scope.restItems = [];
+            $scope.restaurants = [];
+
+
+
+//            var collection = db.get('restaurants');
+//            collection.find({},{},function(err, docs) {
+//                collection.each(function(err, ))
+//            });
+
+//            var oneRest;
+//            while(docs.hasNext()) {
+//                oneRest = docs.next();
+//                restaurants.push(oneRest);
+//            }
+
+            // CREATE
+//            $scope.createNewRestaurant = function() {
+//                event.preventDefault()
+//
+//                console.log("Added restaurant is " + $scope.restaurant);
+////                console.log("Item 1 is " + $scope.restaurant.item[0])
+////                console.log("Restaurant name is " + restaurant.restaurant)
+//
+//                var restaurant = new Restaurant({
+//                    restaurant: this.newRestaurant,
+//                    phonenumber: this.phoneNumber,
+//                    item: [
+//                        $scope.restItems
+//                    ]
+//                });
+//
+//                $scope.restaurants.push(restaurant);
+//
+//                restaurant.$save(function (response) {
+//                    $location.path('restaurants');
+//                });
+//
+//                this.restaurant.restaurant = "";
+//                this.restaurant.item = "";
+//
+//            }
+//
+//            // FIND
+            $scope.find = function (query) {
+                Restaurant.query(query, function (restaurant) {
+                    $scope.restaurant = restaurant;
+                });
+            };
+//
+//            // FIND ONE
+//            $scope.findOne = function () {
+//                Restaurant.get({ restaurantId: $routeParams.restaurantId }, function (restaurant) {
+//                    $scope.restaurant = restaurant;
+//                });
+//            };
+//
+//            // UPDATE/MODIFY
+//            $scope.update = function () {
+//                var restaurant = $scope.restaurant;
+//                restaurant.$update(function () {
+//                    $location.path('restaurant');
+//                });
+//            };
+//
+//            // DELETE
+//            $scope.destroy = function (league) {
+//                league.$remove();
+//                for (var i in $scope.leagues) {
+//                    if ($scope.leagues[i] == league) {
+//                        $scope.leagues.splice(i, 1)
+//                    }
+//                }
+//            };
 
             $scope.addNewRestItem = function () {
                 $scope.restItems.push(
