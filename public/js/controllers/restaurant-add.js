@@ -12,7 +12,39 @@ window.angular.module('ngff.controllers.restaurant-add', [])
             $scope.restItems = [];
             $scope.restaurants = [];
 
+            //$http({method: 'GET', url: 'http://localhost:28017/ngff-dev/restaurants/'}).
+            //mongodb://localhost/ngff-dev
 
+
+            $http.get("/restaurants").success(function(data, status, headers, config) {
+                $scope.data = data;
+                console.log("Success " + $scope.data[0].name);
+                $scope.restaurants.push($scope.data);
+            })
+                                     .error(function(data, status, headers, config) {
+                console.log("Failure " + status);
+            });
+
+
+//            $http({method: 'GET', url: 'mongodb://ngff-dev/'}).
+//                success(function(data, status, headers, config) {
+//                    // this callback will be called asynchronously
+//                    // when the response is available
+//                    console.log("Success" + data);
+//                }).
+//                error(function(data, status, headers, config) {
+//                    // called asynchronously if an error occurs
+//                    // or server returns response with an error status.
+//                    console.log('Failure' + status);
+//                    console.log("config: "+config);
+//                });
+
+//            return $resource('http://localhost\\:3000/realmen/:entryId', {}, {
+//                query: {method:'GET', params:{entryId:''}, isArray:true},
+//                post: {method:'POST'},
+//                update: {method:'PUT', params: {entryId: '@entryId'}},
+//                remove: {method:'DELETE'}
+//            });
 
 //            var collection = db.get('restaurants');
 //            collection.find({},{},function(err, docs) {

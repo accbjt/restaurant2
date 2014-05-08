@@ -11,12 +11,12 @@
     <ul ng-model='selectedRestaurant'>
         <li ng-repeat='obj in restaurants'>
             <button ng-click="setValueOfIdx($index)">Details</button>
-            {{obj.name}}
+            {{obj[$index].name}}
         </li>
     </ul>
 
     <ul ng-model='selectedDetails'>
-        <li ng-repeat='label in restaurants[idx].items'>{{label}}</li>
+        <li ng-repeat='label in restaurants[$index].items[$index]'>{{label}}</li>
     </ul>
 
     <label for="newRestaurant">Rest Name:</label>
