@@ -103,3 +103,7 @@ exports.user = function (req, res, next, id) {
       next()
     })
 }
+
+exports.accountmanagement = function (req, res) {
+  res.render('users/accountmanagement')
+}

@@ -14,11 +14,11 @@ var path = require('path')
 
 module.exports = {
   development: {
-    db: 'mongodb://localhost/ngff-dev',
+    db: 'mongodb://localhost/test',
     root: rootPath,
     notifier: notifier,
     app: {
-      name: 'ngFantasyFootball - Development'
+      name: 'Coding House - Restaurant'
     }
   },
   test: {

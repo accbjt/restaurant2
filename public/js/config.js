@@ -9,6 +9,10 @@ window.app.config(['$routeProvider', function($routeProvider) {
     {
         templateUrl: 'views/restaurant/addrestaurant.html'
     })
+    .when('/accountmanagement',
+    {
+        templateUrl: 'views/account/accountmanagement.html'
+    })
 	.otherwise({redirectTo: '/'});
 }]);
 

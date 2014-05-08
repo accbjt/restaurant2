@@ -1,6 +1,6 @@
 <div class="navbar-inner" ng-controller="HeaderController">
 	<ul class="nav">
-		<li><a class="brand" href="/">ngFantasyFootball</a></li>
+		<li><a class="brand" href="/">Coding House</a></li>
 	</ul>
 	<ul class="nav pull-right" ng-hide="global.isSignedIn()">
 		<li><a href="signup">Signup</a></li>
@@ -13,6 +13,7 @@
 				{{ global.currentUser().name }}<b class="caret"></b>
 			</a>
 			<ul class="dropdown-menu">
+				<li ><a href="/accountmanagement">Account Management</a></li>
 				<li ><a href="/signout">Signout</a></li>
 			</ul>
 		</li>
