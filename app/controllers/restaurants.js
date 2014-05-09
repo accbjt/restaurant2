@@ -9,14 +9,14 @@ var mongoose = require('mongoose')
 
 exports.create = function (req, res) {
     var restaurant = new Restaurant(req.body)
-    restaurant.provider = 'local'
+    restaurant.name = req.newName;
     restaurant.save(function (err) {
         if (err) {
-            return res.render('users/signup', { errors: err.errors, user: user })
+            return res.render('/addrestaurant', { errors: err.errors, user: user })
         }
         req.logIn(restaurant, function(err) {
             if (err) return next(err)
-            return res.redirect('/')
+            return res.redirect('/addrestaurant')
         })
     })
 }

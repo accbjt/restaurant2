@@ -8,15 +8,15 @@
 
 <div id='content' ng-app='MyTutorialApp' ng-controller='AddRestaurantController'>
 
-    <ul ng-model='selectedRestaurant'>
-        <li ng-repeat='obj in restaurants'>
+    <ul ng-model='restaurantList'>
+        <li ng-repeat='obj in restaurantList'>
             <button ng-click="setValueOfIdx($index)">Details</button>
-            {{obj[$index].name}}
+            {{obj.name}}
         </li>
     </ul>
 
     <ul ng-model='selectedDetails'>
-        <li ng-repeat='label in restaurants[$index].items[$index]'>{{label}}</li>
+        <li ng-repeat='item in restaurantList[idx].items'>{{item}}</li>
     </ul>
 
     <label for="newRestaurant">Rest Name:</label>
